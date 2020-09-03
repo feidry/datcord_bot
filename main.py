@@ -42,8 +42,6 @@ KIDS_CAN_CODE_YT: Final = "https://www.youtube.com/channel/UCNaPQ5uLX5iIEHUCLmfA
 GDQUEST_YT: Final = "https://www.youtube.com/channel/UCxboW7x0jZqFdvMdCFKTMsQ"
 GAME_PROGRAMMING_PATTERNS_URL: Final = "http://gameprogrammingpatterns.com/contents.html"
 DOWNLOAD_MIRROR_URL: Final = "https://archive.hugo.pro/godot-tuxfamily/"
-SUPPORTED_LANGUAGES: Final = "https://github.com/Vivraan/godot-lang-support"
-CONSOLE_SUPPORT: Final = "https://docs.godotengine.org/en/latest/tutorials/platform/consoles.html"
 
 # Valid class name regular expression. This avoids possible exploits, such as
 # highlighting blocked users on Discord or redirecting to unwanted pages.
@@ -66,14 +64,16 @@ HELP_STRING: Final = """:book: **Commands:**
 !pronounce: *Godot pronounciation.*
 !step: *Godot step by step documentation.*
 !tut: *List of tutorials in the Godot documentation.*
-!lang: *Community-maintained list of programming languages supported in Godot.*
-!consoles: *Documentation about porting a Godot project to consoles.*"""
+!ask: *Response to be used when users are asking if they can ask a question, which is redundant.*"""
 
 # How long to wait for before deleting messages
 FEEDBACK_DEL_TIMER: Final = 5
 
 # A lot of people ask how to prounce Godot
 HOW_TO_PRONOUNCE_GODOT: Final = "There is no right way. It varies based on your region."
+    
+# I'm not sure where else to put this as I don't see any other single line strings being defined.
+ASK_QUESTIONS: Final = "You do not need to ask permission to ask a question. Just ask your question and anyone that can help will answer you as soon as possible."
 
 WORK_ON_GAME: Final = "https://imgur.com/a/egsXCBs"
 EMBED_ROSS_ICON: Final = "http://i.imgur.com/OZLdaSn.png"
@@ -597,11 +597,9 @@ async def on_message(message: Any) -> None:
     elif message.content.lower().startswith("!tut"):
         await message.channel.send(TUTORIALS_URL)
     
-    elif message.content.lower().startswith("!lang"):
-        await message.channel.send(SUPPORTED_LANGUAGES)
+    elif message.content.lower().startswith("!ask"):
+        await message.channel.send(ASK_QUESTIONS)
 
-    elif message.content.lower().startswith("!consoles"):
-        await message.channel.send(CONSOLE_SUPPORT)
 
 # Prepare for takeoff.
 populate_memes()
